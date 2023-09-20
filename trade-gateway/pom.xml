@@ -40,10 +40,6 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>cn.trade-common</groupId>
-            <artifactId>trade-common</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
