@@ -8,6 +8,9 @@
         <option value="$PROJECT_DIR$/../cloud/pom.xml" />
         <option value="$PROJECT_DIR$/cloud/pom.xml" />
         <option value="$PROJECT_DIR$/trade-center/pom.xml" />
+        <option value="$PROJECT_DIR$/trade-core/pom.xml" />
+        <option value="$PROJECT_DIR$/trade-wallet/pom.xml" />
+        <option value="$PROJECT_DIR$/trade-admin/pom.xml" />
       </list>
     </option>
   </component>

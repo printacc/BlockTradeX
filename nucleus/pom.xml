@@ -11,7 +11,15 @@
   <name>Maven</name>
   <modules>
     <module>cloud</module>
+<!--    用户，登录，注册，等-->
     <module>trade-center</module>
+<!--    核心主键共享工具，接口，dao,等-->
+    <module>trade-core</module>
+<!--    钱包接口，进行与区块链节点接入的入口-->
+    <module>trade-wallet</module>
+<!--    管理后台-->
+    <module>trade-admin</module>
+
   </modules>
 
 
@@ -22,6 +30,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
     <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+    <mysql.version>8.0.23</mysql.version>
   </properties>
 
   <dependencyManagement>
@@ -39,6 +48,18 @@
         <version>${spring-boot.version}</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+<!--      mysql-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql.version}</version>
+      </dependency>
+<!--      Redis-->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+        <version>${spring-boot.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
