@@ -2,7 +2,9 @@ package cn.muses.trade.filter;
 
 import com.auth0.jwt.interfaces.Claim;
 
+import cn.muses.trade.util.RedisUtil;
 import cn.muses.trade.util.JwtUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,6 +23,8 @@ import java.util.Map;
 
 @Component
 public class AuthenticationTokenFilter extends OncePerRequestFilter {
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
@@ -48,13 +52,12 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 设置权限，从缓存中获取用户信息
         List<GrantedAuthority> authorityList = null;
-        for (Map<String, Object> item: CacheDao.userInfoList) {
+        Map<String, Object> item= (Map<String, Object>) redisUtil.get(userId);
+
             if(item.get("token").equals(token)){
                 isExistToken = true;
                 authorityList = (List<GrantedAuthority>) item.get("authority");
-                break;
             }
-        }
 
         if(!isExistToken){
             filterChain.doFilter(httpServletRequest, httpServletResponse);

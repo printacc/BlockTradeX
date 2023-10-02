@@ -1,6 +1,8 @@
 package cn.muses.trade.config;
 
 
+import cn.muses.trade.dao.MemberDao;
+import cn.muses.trade.entity.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,14 +15,14 @@ import org.springframework.stereotype.Component;
 public class UserDetailsServiceImp implements UserDetailsService {
 
     @Autowired
-    private UserInfoDao userInfoDao;
+    private MemberDao memberDao;
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         // 根据用户名获取用户的权限信息
-        UserInfo userInfo = this.userInfoDao.getUserInfo(userName);
+        Member userInfo = this.memberDao.findMemberByMobilePhoneOrEmail(userName,userName);
 
-        return userInfo;
+        return (UserDetails) userInfo;
     }
 
 }
