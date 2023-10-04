@@ -64,7 +64,7 @@ public class BeanMapUtils {
             field.setAccessible(true);
             String key = field.getName();
             if (field.isAnnotationPresent(cn.muses.trade.core.Field.class)) {
-                cn.muses.trade.core.Field alias = (cn.muses.trade.core.Field)field.getAnnotation(com.bizzan.bitrade.core.Field.class);
+                cn.muses.trade.core.Field alias = (cn.muses.trade.core.Field)field.getAnnotation(cn.muses.trade.core.Field.class);
                 key = alias.value();
             }
 

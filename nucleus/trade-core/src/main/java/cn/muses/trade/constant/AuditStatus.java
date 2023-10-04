@@ -6,7 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
+ * @description 审核信息状态
+ * @date 2019/12/26 14:42
+ */
 @AllArgsConstructor
 @Getter
 public enum AuditStatus implements BaseEnum{

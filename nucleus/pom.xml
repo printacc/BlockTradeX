@@ -37,6 +37,98 @@
   </properties>
 
   <dependencyManagement>
+<!--    <dependencies>-->
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.cloud</groupId>-->
+<!--        <artifactId>spring-cloud-dependencies</artifactId>-->
+<!--        <version>${spring-cloud.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-dependencies</artifactId>-->
+<!--        <version>${spring-boot.version}</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
+<!--&lt;!&ndash;      mysql&ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>mysql</groupId>-->
+<!--        <artifactId>mysql-connector-java</artifactId>-->
+<!--        <version>${mysql.version}</version>-->
+<!--      </dependency>-->
+<!--&lt;!&ndash;      Redis&ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--        <version>${spring-boot.version}</version>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        <version>${spring-boot.version}</version>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>cn.hutool</groupId>-->
+<!--        <artifactId>hutool-all</artifactId>-->
+<!--        <version>5.7.22</version>-->
+<!--      </dependency>-->
+<!--      <dependency>-->
+<!--        <groupId>com.alibaba</groupId>-->
+<!--        <artifactId>fastjson</artifactId>-->
+<!--        <version>${fastjson.version}</version>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>org.springframework.boot</groupId>-->
+<!--        <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--        <version>${spring-boot.version}</version>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--        <artifactId>jackson-core</artifactId>-->
+<!--        <version>2.12.3</version>-->
+<!--      </dependency>-->
+<!--      <dependency>-->
+<!--        <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--        <artifactId>jackson-annotations</artifactId>-->
+<!--        <version>2.12.1</version>-->
+<!--      </dependency>-->
+<!--      <dependency>-->
+<!--        <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--        <artifactId>jackson-databind</artifactId>-->
+<!--        <version>2.12.1</version>-->
+<!--      </dependency>-->
+<!--&lt;!&ndash;      kafka&ndash;&gt;-->
+<!--      <dependency>-->
+<!--        <groupId>org.apache.kafka</groupId>-->
+<!--        <artifactId>kafka-clients</artifactId>-->
+<!--        <version>${kafka_version}</version>-->
+<!--      </dependency>-->
+
+<!--      <dependency>-->
+<!--        <groupId>commons-fileupload</groupId>-->
+<!--        <artifactId>commons-fileupload</artifactId>-->
+<!--        <version>${commons-fileupload_version}</version>-->
+<!--      </dependency>-->
+<!--    </dependencies>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
     <dependencies>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
@@ -52,13 +144,18 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-<!--      mysql-->
+
+
+
+
+
+
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql.version}</version>
       </dependency>
-<!--      Redis-->
+      <!--      Redis-->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -87,23 +184,7 @@
         <artifactId>spring-boot-starter-data-jpa</artifactId>
         <version>${spring-boot.version}</version>
       </dependency>
-
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-core</artifactId>
-        <version>2.12.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-annotations</artifactId>
-        <version>2.12.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.12.1</version>
-      </dependency>
-<!--      kafka-->
+      <!--      kafka-->
       <dependency>
         <groupId>org.apache.kafka</groupId>
         <artifactId>kafka-clients</artifactId>
@@ -116,7 +197,25 @@
         <version>${commons-fileupload_version}</version>
       </dependency>
     </dependencies>
+
+
+
+
+
+
+
+
+
+
+
   </dependencyManagement>
+
+
+
+
+
+
+
 
 
 

@@ -86,7 +86,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 设置认证的action
         http.authorizeRequests()
                 // 不拦截以下action
-                .antMatchers("/security/login").permitAll()
+                .antMatchers("/login").permitAll()
 
                 // 具有admin和expert权限的可以访问此路径
 //                .antMatchers("/security/admin").hasAnyAuthority("admin", "expert")

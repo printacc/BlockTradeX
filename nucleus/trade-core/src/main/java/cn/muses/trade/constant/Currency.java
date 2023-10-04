@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
+ * @create 2020年12月07日
  * @desc 电子币种
  */
 @AllArgsConstructor

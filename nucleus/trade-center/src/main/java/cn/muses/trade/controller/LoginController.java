@@ -1,6 +1,7 @@
 package cn.muses.trade.controller;
 
 import cn.muses.trade.entity.Member;
+import cn.muses.trade.entity.UserInfo;
 import cn.muses.trade.util.JwtUtil;
 import cn.muses.trade.util.MessageResult;
 import cn.muses.trade.util.RedisUtil;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +29,8 @@ public class LoginController {
     @Transactional(rollbackFor = Exception.class)
     public MessageResult login(String username, String password, Long code, String country) {
         code = code==null ? 0L:code;
+        System.out.println("username = " + username);
+        System.out.println("password = " + password);
         String token = getLoginInfo(username, password);
         if(token!=null){
             return MessageResult.success(token);
@@ -54,13 +56,14 @@ public class LoginController {
         try {
             // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername
             authentication =  this.authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+            System.out.println("authentication = " + authentication);
         } catch (Exception e) {
             System.out.println("账号或密码错误！");
         }
 
         if(authentication != null){
             // 获取用户信息
-            Member userInfo = (Member) authentication.getPrincipal();
+            UserInfo userInfo = (UserInfo) authentication.getPrincipal();
             System.out.println(userInfo.getId()+" "+userInfo.getUsername());
 
             // 生成token
@@ -72,6 +75,8 @@ public class LoginController {
             cacheUserInfo.put("userId", userInfo.getId());
             cacheUserInfo.put("token", token);
             cacheUserInfo.put("Member", userInfo);
+            System.out.println("userInfoaaaaa = " + userInfo.getId());
+            System.out.println("cacheUserInfo = " + cacheUserInfo);
             redisUtil.set(userInfo.getId().toString(),cacheUserInfo);
 
             return token;

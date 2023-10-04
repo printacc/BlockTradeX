@@ -6,7 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
+ * @description
+ * @date 2019/1/8 14:51
+ */
 @AllArgsConstructor
 @Getter
 public enum AdvertiseStatus implements BaseEnum {

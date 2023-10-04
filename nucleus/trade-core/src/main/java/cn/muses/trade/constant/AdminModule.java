@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
+ * @date 2020年12月19日
+ */
 @AllArgsConstructor
 @Getter
 public enum AdminModule {

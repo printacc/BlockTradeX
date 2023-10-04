@@ -6,7 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
+/**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
+ * @date 2020年01月20日
+ */
 @AllArgsConstructor
 @Getter
 public enum PayMode implements BaseEnum {

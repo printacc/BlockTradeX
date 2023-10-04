@@ -7,7 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
  * @description 会员等级实体
+ * @date 2019/12/26 17:12
  */
 @Data
 @Entity

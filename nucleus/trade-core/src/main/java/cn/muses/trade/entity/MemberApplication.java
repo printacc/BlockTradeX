@@ -12,7 +12,9 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
+ * @author Hevin  E-mail:bizzanhevin@gmail.com
  * @description 会员审核信息
+ * @date 2019/12/26 14:35
  */
 @Entity
 @Table(name = "member_application")
