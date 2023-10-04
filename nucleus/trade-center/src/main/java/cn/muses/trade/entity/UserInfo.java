@@ -14,14 +14,14 @@ public class UserInfo implements UserDetails {
     private String id;
     private String username;
     private String password;
-//    private Member member;
+    private Member member;
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserInfo(Member member){
         this.id=member.getId().toString();
         this.username=member.getMobilePhone();
         this.password=member.getPassword();
-//        this.member=member;
+        this.member=member;
     }
 
     public String getId() {
@@ -39,13 +39,13 @@ public class UserInfo implements UserDetails {
         return this.username;
     }
 
-//    public Member getMember() {
-//        return member;
-//    }
-//
-//    public void setMember(Member member) {
-//        this.member = member;
-//    }
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
 
     public void setPassword(String password) {
         this.password = password;

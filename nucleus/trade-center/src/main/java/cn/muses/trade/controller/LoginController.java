@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,8 +31,6 @@ public class LoginController {
     @Transactional(rollbackFor = Exception.class)
     public MessageResult login(String username, String password, Long code, String country) {
         code = code==null ? 0L:code;
-        System.out.println("username = " + username);
-        System.out.println("password = " + password);
         String token = getLoginInfo(username, password);
         if(token!=null){
             return MessageResult.success(token);
@@ -64,8 +64,7 @@ public class LoginController {
         if(authentication != null){
             // 获取用户信息
             UserInfo userInfo = (UserInfo) authentication.getPrincipal();
-            System.out.println(userInfo.getId()+" "+userInfo.getUsername());
-
+            System.out.println("userInfo = " + userInfo);
             // 生成token
             String token = JwtUtil.createToken(userInfo.getId().toString());
 
@@ -74,17 +73,22 @@ public class LoginController {
             Map<String, Object> cacheUserInfo = new HashMap<>();
             cacheUserInfo.put("userId", userInfo.getId());
             cacheUserInfo.put("token", token);
-            cacheUserInfo.put("Member", userInfo);
-            System.out.println("userInfoaaaaa = " + userInfo.getId());
+            cacheUserInfo.put("Member",userInfo.getMember().getMobilePhone());
+            cacheUserInfo.put("email", userInfo.getMember().getEmail());
             System.out.println("cacheUserInfo = " + cacheUserInfo);
             redisUtil.set(userInfo.getId().toString(),cacheUserInfo);
-
             return token;
         }else {
             System.out.println("登录失败！");
             return null;
         }
 
+    }
+
+    @GetMapping("/adminTest")
+    public String adminTest(Authentication authentication){
+        System.out.println("authentication.getPrincipal() = " + authentication.getPrincipal());
+        return "admin++++++++++________________+============Test/naaaccc"+authentication.getPrincipal();
     }
 
 

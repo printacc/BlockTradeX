@@ -4,6 +4,7 @@ import cn.muses.trade.util.JwtUtil;
 import com.auth0.jwt.interfaces.Claim;
 
 import cn.muses.trade.util.RedisUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -45,7 +46,8 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }
-        String userId = String.valueOf(userInfoMap.get("userid"));
+        String userId = userInfoMap.get("userid").asString();
+        System.out.println("userId = " + userId);
 
         // 判断token是否在缓存中，实际中可使用redis替代
         boolean isExistToken = false;
@@ -54,7 +56,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         List<GrantedAuthority> authorityList = null;
         Map<String, Object> item= (Map<String, Object>) redisUtil.get(userId);
 
-            if(item.get("token").equals(token)){
+        if(item.get("token").equals(token)){
                 isExistToken = true;
                 authorityList = (List<GrantedAuthority>) item.get("authority");
             }
@@ -66,7 +68,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 验证id，并设置权限
         // 注意：此处是为了通过检验，不能添加密码
-        Authentication authentication = new UsernamePasswordAuthenticationToken(userId,null, authorityList);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(item,null, authorityList);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 放行action
         filterChain.doFilter(httpServletRequest, httpServletResponse);
