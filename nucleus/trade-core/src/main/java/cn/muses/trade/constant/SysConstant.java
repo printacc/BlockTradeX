@@ -2,9 +2,6 @@ package cn.muses.trade.constant;
 
 /**
  * 系统常量
- *
- * @author Hevin  E-mail:bizzanhevin@gmail.com
- * @date 2020年12月18日
  */
 public class SysConstant {
     /**

@@ -84,7 +84,7 @@ public class RedisUtil {
      * @param time  时间(秒) -1为无期限
      * @return true成功 false 失败
      */
-    public void set(String key, String value, long time) {
+    public void set(String key, Object value, long time) {
         if (time > 0) {
             redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
         } else {
@@ -329,7 +329,12 @@ public class RedisUtil {
      * @return 删除成功的 数量
      */
     public Long delete(String key, String... hashKeys) {
+
         return redisTemplate.opsForHash().delete(key, hashKeys);
+    }
+    public Boolean deletekey(String key) {
+
+       return redisTemplate.delete(key);
     }
 
     /**
@@ -520,5 +525,8 @@ public class RedisUtil {
     public void rightPop(String key, long timeout, TimeUnit unit) {
         redisTemplate.opsForList().rightPop(key, timeout, unit);
     }
+
+
+
 }
 

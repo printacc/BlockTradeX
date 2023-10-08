@@ -40,14 +40,12 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 验证token是否合法
         Map<String, Claim> userInfoMap = JwtUtil.parseToken(token);
-        System.out.println("userInfoMap = " + userInfoMap);
 
         if(userInfoMap == null){
             filterChain.doFilter(httpServletRequest, httpServletResponse);
             return;
         }
         String userId = userInfoMap.get("userid").asString();
-        System.out.println("userId = " + userId);
 
         // 判断token是否在缓存中，实际中可使用redis替代
         boolean isExistToken = false;
@@ -68,6 +66,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
         // 验证id，并设置权限
         // 注意：此处是为了通过检验，不能添加密码
+        //UsernamePasswordAuthenticationToken是进行身份验证和存储登录信息的item就是存储的信息
         Authentication authentication = new UsernamePasswordAuthenticationToken(item,null, authorityList);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 放行action

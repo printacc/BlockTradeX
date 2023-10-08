@@ -42,10 +42,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationTokenFilter authenticationTokenFilter;
 
+    @Autowired
+    private MyAuthenticationProvider myAuthenticationProvider;
+
     // 将BCryptPasswordEncoder对象注入Spring容器中，
     // SpringSecurity会使用PasswordEncoder自动密码校验
     @Bean
     public PasswordEncoder passwordEncoder(){
+//        return new Md5PasswordEncoder();
         return new BCryptPasswordEncoder();
     }
 
@@ -62,6 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 会自动调用UserDetailsServiceImp下的loadUserByUsername()方法
         auth.userDetailsService(this.userDetailsService).passwordEncoder(this.passwordEncoder());
+        auth.authenticationProvider(this.myAuthenticationProvider);
     }
 
     // 用户授权，配置拦截请求、请求验证、异常处理
@@ -86,7 +91,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // 设置认证的action
         http.authorizeRequests()
                 // 不拦截以下action
-                .antMatchers("/login").permitAll()
+                .antMatchers("/login","/register/email","/bind/email/code").permitAll()
 
                 // 具有admin和expert权限的可以访问此路径
 //                .antMatchers("/security/admin").hasAnyAuthority("admin", "expert")

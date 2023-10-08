@@ -1,7 +1,7 @@
 package cn.muses.trade.constant;
 
 import cn.muses.trade.core.BaseEnum;
-import com.fasterxml.jackson.annotation.JsonValue;
+//import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +30,7 @@ public enum ActivityRewardType implements BaseEnum {
     private String cnName;
 
     @Override
-    @JsonValue
+//    @JsonValue
     public int getOrdinal() {
         return ordinal();
     }

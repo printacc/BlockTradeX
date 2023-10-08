@@ -9,10 +9,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * @author Hevin  E-mail:bizzanhevin@gmail.com
- * @date 2020年01月11日
- */
+
 @Builder
 @Data
 public class AuthMember implements Serializable {
