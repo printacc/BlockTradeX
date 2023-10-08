@@ -62,8 +62,8 @@ public class MemberService  {
     }
 
     //查询唯一
-//    public Member findOne(Long id) {
-//        return memberDao.findOne(id);
-//    }
+    public Member findOne(Long id) {
+        return memberDao.findGetOne(id);
+    }
 
 }

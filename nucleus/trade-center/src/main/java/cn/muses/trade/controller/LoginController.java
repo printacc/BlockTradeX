@@ -3,6 +3,7 @@ package cn.muses.trade.controller;
 import cn.muses.trade.entity.LoginInfo;
 import cn.muses.trade.entity.Member;
 import cn.muses.trade.entity.UserInfo;
+import cn.muses.trade.service.MemberService;
 import cn.muses.trade.util.JwtUtil;
 import static cn.muses.trade.util.MessageResult.success;
 
@@ -30,6 +31,8 @@ public class LoginController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private RedisUtil redisUtil ;
+    @Autowired
+    private MemberService memberService;
 
 
     @RequestMapping(value = "/login")
@@ -101,6 +104,7 @@ public class LoginController {
         String encodedPassword = encoder.encode(password);
         System.out.println("encodedPassword = " + encodedPassword);
         System.out.println("authentication.getPrincipal() = " + authentication.getPrincipal());
+
         return "admin++++++++++________________+============Test/naaaccc"+authentication.getPrincipal();
     }
 
@@ -109,7 +113,7 @@ public class LoginController {
         Map<String, String> principal = (Map<String, String>) authentication.getPrincipal();
         System.out.println("principal = " + principal.get("userId"));
         Boolean delete = redisUtil.deletekey("600823");
-
+        System.out.println("memberService.findOne(Long.valueOf(principal.get(\"userId\"))) = " + memberService.findOne(Long.valueOf(principal.get("userId"))));
         return success();
     }
 

@@ -584,78 +584,78 @@ public class RegisterController {
      * @param user
      * @return
      */
-//    @RequestMapping(value = "/untie/email/code", method = RequestMethod.POST)
-//    @ResponseBody
-//    public MessageResult untieEmailCode(@SessionAttribute(SESSION_MEMBER) AuthMember user){
-//        Member member = memberService.findOne(user.getId());
-//        isTrue(member.getEmail()!=null, localeMessageSourceService.getMessage("NOT_BIND_EMAIL"));
-//        ValueOperations valueOperations = redisTemplate.opsForValue();
-//        Object cache = valueOperations.get(SysConstant.EMAIL_UNTIE_CODE_PREFIX + member.getEmail());
-//        if(cache!=null){
-//            return error(localeMessageSourceService.getMessage("EMAIL_ALREADY_SEND"));
-//        }
-//        String code = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
-//        try {
-//            emailProvider.sendEmail(member.getEmail(), code,"Verification Code","resetPasswordCodeEmail.ftl");
-//            valueOperations.set(RESET_PASSWORD_CODE_PREFIX + member.getEmail(), code, 10, TimeUnit.MINUTES);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return success();
-//    }
-//
-//    /**
-//     * 发送新邮箱验证码
-//     *
-//     * @param user
-//     * @return
-//     */
-//    @RequestMapping(value = "/update/email/code", method = RequestMethod.POST)
-//    @ResponseBody
-//    public MessageResult updateEmailCode(@SessionAttribute(SESSION_MEMBER) AuthMember user,String email){
-//        if(memberService.emailIsExist(email)){
-//            return MessageResult.error(localeMessageSourceService.getMessage("REPEAT_EMAIL_REQUEST"));
-//        }
-//        Member member = memberService.findOne(user.getId());
-//        ValueOperations valueOperations = redisTemplate.opsForValue();
-//        isTrue(member.getEmail()!=null, localeMessageSourceService.getMessage("NOT_BIND_EMAIL"));
-//        Object cache = valueOperations.get(SysConstant.EMAIL_UPDATE_CODE_PREFIX + email);
-//        if(cache!=null){
-//            return error(localeMessageSourceService.getMessage("EMAIL_ALREADY_SEND"));
-//        }
-//        String code = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
-//        try {
-//            emailProvider.sendEmail(email, code,"Verification Code","resetPasswordCodeEmail.ftl");
-//            valueOperations.set(RESET_PASSWORD_CODE_PREFIX + email, code, 10, TimeUnit.MINUTES);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return success();
-//    }
-//
-//    @RequestMapping("/reg/email/code")
-//    @ResponseBody
-//    @Transactional(rollbackFor = Exception.class)
-//    public MessageResult sendRegEmail(String email) {
-//        Assert.isTrue(ValidateUtil.isEmail(email), localeMessageSourceService.getMessage("WRONG_EMAIL"));
-//
-//        Assert.isTrue(!memberService.emailIsExist(email), localeMessageSourceService.getMessage("EMAIL_ALREADY_BOUND"));
-//        String code = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
-//        ValueOperations valueOperations = redisTemplate.opsForValue();
-//        if (valueOperations.get(EMAIL_REG_CODE_PREFIX + email) != null) {
-//            return error(localeMessageSourceService.getMessage("EMAIL_ALREADY_SEND"));
-//        }
-//        try {
-//            emailProvider.sendEmail(email, code,"Verification Code","bindCodeEmail.ftl");
-//            valueOperations.set(EMAIL_REG_CODE_PREFIX + email, code, 10, TimeUnit.MINUTES);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            log.error(e.getMessage());
-//            return error(localeMessageSourceService.getMessage("SEND_FAILED"));
-//        }
-//        return success(localeMessageSourceService.getMessage("SENT_SUCCESS_TEN"));
-//    }
+    @RequestMapping(value = "/untie/email/code", method = RequestMethod.POST)
+    @ResponseBody
+    public MessageResult untieEmailCode(@SessionAttribute(SESSION_MEMBER) AuthMember user){
+        Member member = memberService.findOne(user.getId());
+        isTrue(member.getEmail()!=null, localeMessageSourceService.getMessage("NOT_BIND_EMAIL"));
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        Object cache = valueOperations.get(SysConstant.EMAIL_UNTIE_CODE_PREFIX + member.getEmail());
+        if(cache!=null){
+            return error(localeMessageSourceService.getMessage("EMAIL_ALREADY_SEND"));
+        }
+        String code = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
+        try {
+            YiDongEmailProvider.sendEmail(member.getEmail(), code,"Verification Code","resetPasswordCodeEmail.ftl");
+            valueOperations.set(RESET_PASSWORD_CODE_PREFIX + member.getEmail(), code, 10, TimeUnit.MINUTES);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return success();
+    }
+
+    /**
+     * 发送新邮箱验证码
+     *
+     * @param user
+     * @return
+     */
+    @RequestMapping(value = "/update/email/code", method = RequestMethod.POST)
+    @ResponseBody
+    public MessageResult updateEmailCode(@SessionAttribute(SESSION_MEMBER) AuthMember user,String email){
+        if(memberService.emailIsExist(email)){
+            return MessageResult.error(localeMessageSourceService.getMessage("REPEAT_EMAIL_REQUEST"));
+        }
+        Member member = memberService.findOne(user.getId());
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        isTrue(member.getEmail()!=null, localeMessageSourceService.getMessage("NOT_BIND_EMAIL"));
+        Object cache = valueOperations.get(SysConstant.EMAIL_UPDATE_CODE_PREFIX + email);
+        if(cache!=null){
+            return error(localeMessageSourceService.getMessage("EMAIL_ALREADY_SEND"));
+        }
+        String code = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
+        try {
+            YiDongEmailProvider.sendEmail(email, code,"Verification Code","resetPasswordCodeEmail.ftl");
+            valueOperations.set(RESET_PASSWORD_CODE_PREFIX + email, code, 10, TimeUnit.MINUTES);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return success();
+    }
+
+    @RequestMapping("/reg/email/code")
+    @ResponseBody
+    @Transactional(rollbackFor = Exception.class)
+    public MessageResult sendRegEmail(String email) {
+        Assert.isTrue(ValidateUtil.isEmail(email), localeMessageSourceService.getMessage("WRONG_EMAIL"));
+
+        Assert.isTrue(!memberService.emailIsExist(email), localeMessageSourceService.getMessage("EMAIL_ALREADY_BOUND"));
+        String code = String.valueOf(GeneratorUtil.getRandomNumber(100000, 999999));
+        ValueOperations valueOperations = redisTemplate.opsForValue();
+        if (valueOperations.get(EMAIL_REG_CODE_PREFIX + email) != null) {
+            return error(localeMessageSourceService.getMessage("EMAIL_ALREADY_SEND"));
+        }
+        try {
+            YiDongEmailProvider.sendEmail(email, code,"Verification Code","bindCodeEmail.ftl");
+            valueOperations.set(EMAIL_REG_CODE_PREFIX + email, code, 10, TimeUnit.MINUTES);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
+            return error(localeMessageSourceService.getMessage("SEND_FAILED"));
+        }
+        return success(localeMessageSourceService.getMessage("SENT_SUCCESS_TEN"));
+    }
 
 
 }

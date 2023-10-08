@@ -103,6 +103,7 @@ public interface MemberDao extends JpaRepository<Member,String> {
 
     List<Member> findAllByIdIn(List<Long> memberIds);
 
-
+    @Query(value = "select * from member where id=:id",nativeQuery = true)
+    Member findGetOne(@Param("id")Long id);
 //    Member findOne(Long id);
 }
