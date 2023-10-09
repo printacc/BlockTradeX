@@ -9,9 +9,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cloud" />
+        <module name="trade-code" />
+        <module name="trade-market" />
         <module name="trade-admin" />
         <module name="trade-center" />
-        <module name="trade-code" />
         <module name="trade-core" />
         <module name="trade-wallet" />
       </profile>

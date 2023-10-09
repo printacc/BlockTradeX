@@ -19,7 +19,8 @@
     <module>trade-wallet</module>
 <!--    管理后台-->
     <module>trade-admin</module>
-
+<!--    k线数据和交易数据-->
+    <module>trade-market</module>
   </modules>
 
 
@@ -34,6 +35,7 @@
     <fastjson.version>1.2.75</fastjson.version>
     <kafka_version>0.10.2.2</kafka_version>
     <commons-fileupload_version>1.3</commons-fileupload_version>
+    <shiro_version>1.7.0</shiro_version>
   </properties>
 
   <dependencyManagement>
@@ -196,6 +198,24 @@
         <artifactId>commons-fileupload</artifactId>
         <version>${commons-fileupload_version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-websocket</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-spring</artifactId>
+        <version>${shiro_version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.shiro</groupId>
+        <artifactId>shiro-quartz</artifactId>
+        <version>${shiro_version}</version>
+      </dependency>
+
     </dependencies>
 
 
