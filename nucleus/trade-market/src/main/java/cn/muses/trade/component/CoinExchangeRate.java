@@ -9,13 +9,15 @@ import cn.muses.trade.processor.CoinProcessor;
 import cn.muses.trade.processor.CoinProcessorFactory;
 import cn.muses.trade.service.CoinService;
 import cn.muses.trade.service.ExchangeCoinService;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+//import com.google.gson.JsonObject;
+//import com.google.gson.JsonParser;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import com.mashape.unirest.request.body.Body;
+import com.mashape.unirest.http.Unirest;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -191,7 +193,6 @@ public class CoinExchangeRate {
     /**
      * 每5分钟同步一次价格
      *
-     * @throws UnirestException
      */
 
     @Scheduled(cron = "0 */5 * * * *")
@@ -199,43 +200,62 @@ public class CoinExchangeRate {
         log.info("开始同步OTC");
 
         JSONObject jsonObject = new JSONObject();
+//        List<String> coins= new ArrayList<>();
+//        coins.add("USDT");
+//        jsonObject.put("assets", coins);
+//
+//        jsonObject.put("tradeType", "BUY");
+//        jsonObject.put("fromUserRole", "USER");
         List<String> coins= new ArrayList<>();
-        coins.add("USDT");
-        jsonObject.put("assets", coins);
+        coins.add("BNBUSDT");
+        jsonObject.put("symbol", coins);
 
-        jsonObject.put("tradeType", "BUY");
-        jsonObject.put("fromUserRole", "USER");
+        jsonObject.put("limit", "1000");
+        jsonObject.put("interval", "1s");
 
         Set<String> currencies = ratesMap.keySet();
         for (String currency : currencies) {
             jsonObject.put("fiatCurrency", currency);
             // binance
-            String urlOk="https://p2p.binance.com/bapi/c2c/v2/public/c2c/adv/quoted-price";
+            String urlOk="http://yunhq.sse.com.cn:32041/v1/sh1/line/600519?callback=jQuery1124003222517014397419_1693909619406&select=time%2Cprice%2Cvolume%2Cavg_price%2Camount%2Chighest%2Clowest&_=1693909619421";
+//            String urlOk="https://www.binance.com/api/v3/uiKlines?limit=1000&symbol=BNBUSDT&interval=1s";
+            int a =1;
+            System.out.println("请求一次"+a++);
+//            String urlOk="https://p2p.binance.com/bapi/c2c/v2/public/c2c/adv/quoted-price";
             try {
-                HttpResponse<JsonNode> resp = Unirest.post(urlOk).header("accept", "application/json").header("content-type", "application/json").body(jsonObject.toJSONString()).asJson();
-                if(resp.getStatus() == 200) { //正确返回
-                    JSONObject ret = JSON.parseObject(resp.getBody().toString());
-                    if("000000".equals(ret.getString("code"))){
-                        JSONArray data = ret.getJSONArray("data");
-                        if(data!=null && data.size()>0){
-                            JSONObject res = (JSONObject) data.get(0);
-                            BigDecimal referencePrice = res.getBigDecimal("referencePrice");
-                            ratesMap.put(currency,referencePrice);
-                            if("CNY".equals(currency)){
-                                usdCnyRate = referencePrice;
-                                usdtCnyRate = referencePrice;
-                            }else if("JPY".equals(currency)){
-                                usdJpyRate = referencePrice;
-                            }else if("HKD".equals(currency)){
-                                usdHkdRate = referencePrice;
-                            }else if("SGD".equals(currency)){
-                                sgdCnyRate = referencePrice;
-                            }
-                        }
-                    }
-                }
+                String response = Unirest.get(urlOk).asString().getBody();
+                int startPos = response.indexOf("(") + 1;
+                int endPos = response.length() - 2;
+                String jsonString = response.substring(startPos, endPos);
+                System.out.println("jsonString = " + jsonString);
 
-            } catch (UnirestException e) {
+
+                System.out.println("resp = " + Unirest.get(urlOk).asJson());
+
+//                HttpResponse<JsonNode> resp = Unirest.get(urlOk).header("accept", "application/json").header("content-type", "application/json").body(jsonObject.toJSONString()).asJson();
+//                if(resp.getStatus() == 200) { //正确返回
+//                    JSONObject ret = JSON.parseObject(resp.getBody().toString());
+//                    if("000000".equals(ret.getString("code"))){
+//                        JSONArray data = ret.getJSONArray("data");
+//                        if(data!=null && data.size()>0){
+//                            JSONObject res = (JSONObject) data.get(0);
+//                            BigDecimal referencePrice = res.getBigDecimal("referencePrice");
+//                            ratesMap.put(currency,referencePrice);
+//                            if("CNY".equals(currency)){
+//                                usdCnyRate = referencePrice;
+//                                usdtCnyRate = referencePrice;
+//                            }else if("JPY".equals(currency)){
+//                                usdJpyRate = referencePrice;
+//                            }else if("HKD".equals(currency)){
+//                                usdHkdRate = referencePrice;
+//                            }else if("SGD".equals(currency)){
+//                                sgdCnyRate = referencePrice;
+//                            }
+//                        }
+//                    }
+//                }
+
+            } catch (Exception e) {
                 log.info("开始同步OTC报错");
                 log.error(e.toString());
                 e.printStackTrace();
@@ -261,10 +281,12 @@ public class CoinExchangeRate {
         for (String currency : currencies) {
             jsonObject.put("fiatCurrency", "CNY");
             // okex接口
-            String urlOk="https://p2p.binance.com/bapi/c2c/v2/public/c2c/adv/quoted-price";
-            Unirest.setProxy(new HttpHost("172.21.112.246", 7890));
+            String urlOk="http://yunhq.sse.com.cn:32041/v1/sh1/line/600519?callback=jQuery1124003222517014397419_1693909619406&select=time%2Cprice%2Cvolume%2Cavg_price%2Camount%2Chighest%2Clowest&_=1693909619421";
+//            String urlOk="https://p2p.binance.com/bapi/c2c/v2/public/c2c/adv/quoted-price";
+//            Unirest.setProxy(new HttpHost("172.21.112.246", 7890));
             try {
-                HttpResponse<JsonNode> resp = Unirest.post(urlOk).header("accept", "application/json").header("content-type", "application/json").body(jsonObject.toJSONString()).asJson();
+                HttpResponse<JsonNode> resp = Unirest.get(urlOk).asJson();
+//                HttpResponse<JsonNode> resp = Unirest.post(urlOk).header("accept", "application/json").header("content-type", "application/json").body(jsonObject.toJSONString()).asJson();
                 if(resp.getStatus() == 200) { //正确返回
                     JSONObject ret = JSON.parseObject(resp.getBody().toString());
                     if("000000".equals(ret.getString("code"))){
@@ -289,7 +311,6 @@ public class CoinExchangeRate {
     /**
      * 每30分钟同步一次价格
      *
-     * @throws UnirestException
      */
 
     @Scheduled(cron = "0 */30 * * * *")

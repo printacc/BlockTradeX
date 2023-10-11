@@ -11,9 +11,6 @@ import java.util.Date;
 
 /**
  * 申诉
- *
- * @author Hevin  E-mail:bizzanhevin@gmail.com
- * @date 2020年01月22日
  */
 @Entity
 @Data

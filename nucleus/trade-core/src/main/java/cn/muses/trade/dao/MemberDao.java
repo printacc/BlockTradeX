@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.List;
 
-public interface MemberDao extends JpaRepository<Member,String> {
+public interface MemberDao extends BaseDao<Member> {
 
 
 
@@ -105,5 +105,5 @@ public interface MemberDao extends JpaRepository<Member,String> {
 
     @Query(value = "select * from member where id=:id",nativeQuery = true)
     Member findGetOne(@Param("id")Long id);
-//    Member findOne(Long id);
+
 }

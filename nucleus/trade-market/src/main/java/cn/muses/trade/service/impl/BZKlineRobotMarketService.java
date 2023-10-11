@@ -54,7 +54,7 @@ public class BZKlineRobotMarketService implements KlineRobotMarketService {
      */
     @Override
     public long findMaxTimestamp(String symbol, String period) {
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC,"time"));
+        Sort sort =  Sort.by(new Sort.Order(Sort.Direction.DESC,"time"));
         Query query = new Query().with(sort).limit(1);
         if(period.equals("60min")){
             period = "1hour";

@@ -2,7 +2,7 @@ package cn.muses.trade.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import cn.muses.trade.component.IndexData;
-import com.mashape.unirest.http.exceptions.UnirestException;
+//import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,16 +17,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("indexdata")
 public class IndexController {
-    @Autowired
-    private IndexData indexData;
-
-    @RequestMapping("sulkindex")
-    public JSONObject sulkIndex() throws UnirestException {
-        JSONObject retData =  indexData.getSulkindex();
-//        if(retData == null) {
-//            indexData.sulkindex();
-//            retData =  indexData.getSulkindex();
-//        }
-        return retData;
-    }
+//    @Autowired
+//    private IndexData indexData;
+//
+//    @RequestMapping("sulkindex")
+//    public JSONObject sulkIndex() throws UnirestException {
+//        JSONObject retData =  indexData.getSulkindex();
+////        if(retData == null) {
+////            indexData.sulkindex();
+////            retData =  indexData.getSulkindex();
+////        }
+//        return retData;
+//    }
 }

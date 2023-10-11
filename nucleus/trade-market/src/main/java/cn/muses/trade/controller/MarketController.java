@@ -9,7 +9,7 @@ import cn.muses.trade.constant.SysConstant;
 import cn.muses.trade.entity.*;
 import cn.muses.trade.processor.CoinProcessor;
 import cn.muses.trade.processor.CoinProcessorFactory;
-import cn.muses.trade.service.CoinService;
+//import cn.muses.trade.service.CoinService;
 import cn.muses.trade.service.ExchangeCoinService;
 import cn.muses.trade.service.ExchangeTradeService;
 import cn.muses.trade.service.MarketService;
@@ -35,8 +35,8 @@ public class MarketController {
     private MarketService marketService;
     @Autowired
     private ExchangeCoinService coinService;
-    @Autowired
-    private CoinService coinInfoService;
+//    @Autowired
+//    private CoinService coinInfoService;
     @Autowired
     private CoinProcessorFactory coinProcessorFactory;
     @Autowired
@@ -109,23 +109,23 @@ public class MarketController {
 		return symbols;
 	}
 
-    /**
-     * 获取币种详情
-     * @param symbol
-     * @return
-     */
-    @RequestMapping("coin-info")
-    public Coin findCoin(String unit){
-        Coin coin = coinInfoService.findByUnit(unit);
-        coin.setColdWalletAddress("");//隐藏冷钱包地址
-        return coin;
-    }
-    
-    /**
-     * 获取C2C中USDT兑换人民币价格
-     * @param symbol
-     * @return
-     */
+//    /**
+//     * 获取币种详情
+//     * @param symbol
+//     * @return
+//     */
+//    @RequestMapping("coin-info")
+//    public Coin findCoin(String unit){
+//        Coin coin = coinInfoService.findByUnit(unit);
+//        coin.setColdWalletAddress("");//隐藏冷钱包地址
+//        return coin;
+//    }
+//
+//    /**
+//     * 获取C2C中USDT兑换人民币价格
+//     * @param symbol
+//     * @return
+//     */
     @RequestMapping("ctc-usdt")
     public MessageResult ctcUsdt(){
     	MessageResult mr = new MessageResult(0,"success");
@@ -261,16 +261,16 @@ public class MarketController {
         return array;
     }
 
-    /**
-     * 查询最近成交记录
-     * @param symbol 交易对符号
-     * @param size 返回记录最大数量
-     * @return
-     */
-    @RequestMapping("latest-trade")
-    public List<ExchangeTrade> latestTrade(String symbol, int size){
-        return exchangeTradeService.findLatest(symbol,size);
-    }
+//    /**
+//     * 查询最近成交记录
+//     * @param symbol 交易对符号
+//     * @param size 返回记录最大数量
+//     * @return
+//     */
+//    @RequestMapping("latest-trade")
+//    public List<ExchangeTrade> latestTrade(String symbol, int size){
+//        return exchangeTradeService.findLatest(symbol,size);
+//    }
 
     @RequestMapping("exchange-plate")
     public Map<String,List<TradePlateItem>> findTradePlate(String symbol){

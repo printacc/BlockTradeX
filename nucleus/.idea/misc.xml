@@ -12,6 +12,8 @@
         <option value="$PROJECT_DIR$/trade-wallet/pom.xml" />
         <option value="$PROJECT_DIR$/trade-admin/pom.xml" />
         <option value="$PROJECT_DIR$/trade-market/pom.xml" />
+        <option value="$PROJECT_DIR$/trade-exchange-core/pom.xml" />
+        <option value="$PROJECT_DIR$/trade-netty/pom.xml" />
       </list>
     </option>
   </component>

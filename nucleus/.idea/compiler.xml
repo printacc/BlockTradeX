@@ -9,12 +9,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cloud" />
+        <module name="trade-exchange-core" />
         <module name="trade-code" />
         <module name="trade-market" />
         <module name="trade-admin" />
         <module name="trade-center" />
         <module name="trade-core" />
         <module name="trade-wallet" />
+        <module name="trade-netty" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
