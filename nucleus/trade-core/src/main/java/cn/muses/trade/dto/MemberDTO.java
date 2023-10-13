@@ -1,7 +1,7 @@
 package cn.muses.trade.dto;
 
-//import com.bizzan.bitrade.entity.Member;
-//import com.bizzan.bitrade.entity.MemberWallet;
+//import cn.muses.trade.entity.Member;
+//import cn.muses.trade.entity.MemberWallet;
 import lombok.Data;
 
 import java.util.List;

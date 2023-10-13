@@ -1,6 +1,6 @@
 package cn.muses.trade.es;
 
-import cn.muses.trade.config.ESConfig;
+//import cn.muses.trade.config.ESConfig;
 import cn.muses.trade.constant.TransactionType;
 import cn.muses.trade.entity.MemberTransaction;
 import cn.muses.trade.util.DateUtil;
@@ -15,8 +15,8 @@ import java.math.BigDecimal;
 @Component
 public class ESUtils {
 
-    @Autowired
-    private ESConfig esConfig;
+//    @Autowired
+//    private ESConfig esConfig;
 
 //    @Autowired
 //    private ESClient esClient;

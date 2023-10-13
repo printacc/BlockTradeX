@@ -43,7 +43,7 @@ public interface MemberDao extends BaseDao<Member> {
 
     List<Member> findAllByInviterId(Long id);
 
-    /*@Query("select new com.bizzan.bitrade.dto.MemberDTO(member,memberWallet) from")*/
+    /*@Query("select new cn.muses.trade.dto.MemberDTO(member,memberWallet) from")*/
 
     @Query(value = "select m.username from member m where m.id = :id", nativeQuery = true)
     String findUserNameById(@Param("id") Long id);

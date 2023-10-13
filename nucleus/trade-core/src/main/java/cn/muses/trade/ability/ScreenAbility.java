@@ -6,12 +6,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 
 import java.util.ArrayList;
 
-/**
- * @author Hevin  E-mail:bizzanhevin@gmail.com
- * @Title: ${file_name}
- * @Description:
- * @date 2019/4/2417:35
- */
+
 public interface ScreenAbility {
     ArrayList<BooleanExpression> booleanExpressions = new ArrayList<>();
 
