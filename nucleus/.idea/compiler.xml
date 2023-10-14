@@ -10,12 +10,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="cloud" />
         <module name="trade-exchange-core" />
+        <module name="trade-exchange-api" />
         <module name="trade-code" />
         <module name="trade-market" />
+        <module name="trade-exchange" />
         <module name="trade-admin" />
         <module name="trade-center" />
         <module name="trade-core" />
         <module name="trade-wallet" />
+        <module name="demo" />
         <module name="trade-netty" />
       </profile>
     </annotationProcessing>

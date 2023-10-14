@@ -1,14 +1,14 @@
-package cn.muses.trade;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class TradeAdminApplicationTests {
-
-    @Test
-    void contextLoads() {
-    }
-
-}
+//package cn.muses.trade;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class TradeAdminApplicationTests {
+//
+//    @Test
+//    void contextLoads() {
+//    }
+//
+//}

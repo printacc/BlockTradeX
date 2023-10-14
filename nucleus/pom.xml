@@ -25,6 +25,10 @@
     <module>trade-exchange-core</module>
 <!--    netty进行信息推送-->
     <module>trade-netty</module>
+<!--    撮合模块-->
+    <module>trade-exchange</module>
+<!--    撮合模块api-->
+    <module>trade-exchange-api</module>
   </modules>
 
 
@@ -44,6 +48,9 @@
     <protostuff_version>1.5.9</protostuff_version>
     <ehcache_version>2.6.11</ehcache_version>
     <druid_version>1.1.22</druid_version>
+
+    <!--反序列化-->
+    <xstream_version>1.4.19</xstream_version>
   </properties>
 
   <dependencyManagement>
@@ -54,6 +61,25 @@
         <artifactId>druid-spring-boot-starter</artifactId>
         <version>${druid_version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        <version>2.2.9.RELEASE</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>xstream</artifactId>
+            <groupId>com.thoughtworks.xstream</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>com.thoughtworks.xstream</groupId>
+        <artifactId>xstream</artifactId>
+        <version>${xstream_version}</version>
+      </dependency>
+
+
 
 
       <dependency>
@@ -111,10 +137,15 @@
         <version>${spring-boot.version}</version>
       </dependency>
       <!--      kafka-->
+<!--      <dependency>-->
+<!--        <groupId>org.apache.kafka</groupId>-->
+<!--        <artifactId>kafka-clients</artifactId>-->
+<!--        <version>${kafka_version}</version>-->
+<!--      </dependency>-->
       <dependency>
-        <groupId>org.apache.kafka</groupId>
-        <artifactId>kafka-clients</artifactId>
-        <version>${kafka_version}</version>
+        <groupId>org.springframework.kafka</groupId>
+        <artifactId>spring-kafka</artifactId>
+        <version>2.5.14.RELEASE</version>
       </dependency>
 
       <dependency>
