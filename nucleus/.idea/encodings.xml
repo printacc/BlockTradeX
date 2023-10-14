@@ -16,6 +16,7 @@
     <file url="file://$PROJECT_DIR$/trade-exchange-api/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/trade-exchange-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/trade-exchange-core/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/trade-exchange-core/target/generated-sources/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/trade-exchange/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/trade-exchange/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/trade-market/src/main/java" charset="UTF-8" />

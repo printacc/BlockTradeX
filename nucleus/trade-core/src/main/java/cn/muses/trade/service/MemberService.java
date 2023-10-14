@@ -69,6 +69,16 @@ public class MemberService  {
         return memberDao.findAll();
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public Member loginWithToken(String token, String ip, String device) {
+        if (StringUtils.isBlank(token)) {
+            return null;
+        }
+        //Member mr = memberDao.findMemberByTokenAndTokenExpireTimeAfter(token,new Date());
+        Member mr = memberDao.findMemberByToken(token);
+        return mr;
+    }
+
 }
 
 
