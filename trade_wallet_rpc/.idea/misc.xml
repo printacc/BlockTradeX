@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/wallet-bitcoin/pom.xml" />
         <option value="$PROJECT_DIR$/wallet-btc-usdt/pom.xml" />
+        <option value="$PROJECT_DIR$/wallet-eth/pom.xml" />
       </list>
     </option>
   </component>
