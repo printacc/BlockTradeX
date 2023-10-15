@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="wallet_rpc" />
+        <module name="wallet-btc-usdt" />
+        <module name="wallet-bitcoin" />
       </profile>
     </annotationProcessing>
   </component>
