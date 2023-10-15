@@ -9,6 +9,7 @@
         <module name="wallet_rpc" />
         <module name="wallet-btc-usdt" />
         <module name="wallet-eth" />
+        <module name="wallet-rpc-common" />
         <module name="wallet-bitcoin" />
       </profile>
     </annotationProcessing>
