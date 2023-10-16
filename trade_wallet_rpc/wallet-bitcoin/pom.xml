@@ -51,20 +51,17 @@
             <groupId>cn.muses.wallet</groupId>
             <artifactId>wallet-rpc-common</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.bizzan.wallet</groupId>
-            <artifactId>bitcoin-rpc</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>cn.muses.wallet</groupId>
             <artifactId>wallet-bitcoin-rpc</artifactId>
         </dependency>
+
         <dependency>
             <groupId>com.spark.bc</groupId>
             <artifactId>bitcoin-rpc</artifactId>
-            <scope>compile</scope>
+            <scope>system</scope>
         </dependency>
-
     </dependencies>
 
     <build>
