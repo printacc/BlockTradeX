@@ -1,0 +1,41 @@
+22:08:38.396 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 6.1.7.Final
+22:08:40.392 [main] INFO  cn.muses.wallet.WalletBitcoinApplication - No active profile set, falling back to default profiles: default
+22:08:41.311 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+22:08:41.377 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 61ms. Found 0 MongoDB repository interfaces.
+22:08:41.803 [main] INFO  o.springframework.cloud.context.scope.GenericScope - BeanFactory id=01121caa-2522-3c4d-9b85-d226d03dbb1c
+22:08:42.249 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9911 (http)
+22:08:42.263 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9911"]
+22:08:42.264 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+22:08:42.264 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.46]
+22:08:42.451 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+22:08:42.452 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2047 ms
+22:08:42.522 [main] INFO  cn.muses.wallet.config.RpcClientConfig - uri=http://bizzan:nJ6lQyVF6sClWG7JC0rneThNAfEwq1Jg@127.0.0.1:28332/
+22:08:44.619 [main] INFO  cn.muses.wallet.config.RpcClientConfig - BitcoinException
+22:08:44.711 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bitcoinWatcher': Unsatisfied dependency expressed through field 'rpcClient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'cn.muses.wallet.rpcclient.BitcoinRPCClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+22:08:44.714 [main] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+22:08:44.745 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+22:08:45.150 [main] INFO  cn.muses.wallet.config.RpcClientConfig - uri=http://bizzan:nJ6lQyVF6sClWG7JC0rneThNAfEwq1Jg@127.0.0.1:28332/
+22:08:47.195 [main] INFO  cn.muses.wallet.config.RpcClientConfig - BitcoinException
+22:08:47.198 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field rpcClient in cn.muses.wallet.component.BitcoinWatcher required a bean of type 'cn.muses.wallet.rpcclient.BitcoinRPCClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+The following candidates were found but could not be injected:
+	- User-defined bean method 'setClient' in 'RpcClientConfig' ignored as the bean value is null
+
+
+Action:
+
+Consider revisiting the entries above or defining a bean of type 'cn.muses.wallet.rpcclient.BitcoinRPCClient' in your configuration.
+

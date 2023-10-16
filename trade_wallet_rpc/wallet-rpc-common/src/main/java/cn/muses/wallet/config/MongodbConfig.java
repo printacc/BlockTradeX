@@ -10,9 +10,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
-import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+//import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+//import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+
 import org.springframework.data.mongodb.core.convert.CustomConversions;
 import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
@@ -23,7 +24,8 @@ import java.util.List;
 
 @Configuration
 @ConditionalOnProperty(name = "spring.data.mongodb.uri")
-public class MongodbConfig extends AbstractMongoConfiguration {
+public class MongodbConfig  {
+//public class MongodbConfig extends AbstractMongoConfiguration {
     @Value("${spring.data.mongodb.uri}")
     private String uri;
 
@@ -32,20 +34,21 @@ public class MongodbConfig extends AbstractMongoConfiguration {
         return new MongoClientURI(uri);
     }
 
-    @Override
-    protected String getDatabaseName() {
-        return this.getMongoClientURI().getDatabase();
-    }
-
-    @Override
-    public Mongo mongo() throws Exception {
-        MongoClient mongoClient = new MongoClient(this.getMongoClientURI());
-        return mongoClient;
-    }
+//    @Override
+//    protected String getDatabaseName() {
+//        return this.getMongoClientURI().getDatabase();
+//    }
+//
+//    @Override
+//    public Mongo mongo() throws Exception {
+//        MongoClient mongoClient = new MongoClient(this.getMongoClientURI());
+//        return mongoClient;
+//    }
 
     @Bean
     public MongoDbFactory dbFactory() throws Exception {
-        return new SimpleMongoDbFactory(this.mongo(), this.getDatabaseName());
+//        return new SimpleMongoDbFactory(this.mongo(), this.getDatabaseName());
+        return null;
     }
 
     @Bean
