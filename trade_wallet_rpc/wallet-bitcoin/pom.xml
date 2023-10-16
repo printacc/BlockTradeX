@@ -57,11 +57,11 @@
             <artifactId>wallet-bitcoin-rpc</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.spark.bc</groupId>
-            <artifactId>bitcoin-rpc</artifactId>
-            <scope>system</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.spark.bc</groupId>-->
+<!--            <artifactId>bitcoin-rpc</artifactId>-->
+<!--            <scope>system</scope>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

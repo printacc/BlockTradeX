@@ -1,8 +1,8 @@
 package cn.muses.wallet.config;
 
 
-import com.spark.blockchain.rpcclient.BitcoinException;
-import com.spark.blockchain.rpcclient.BitcoinRPCClient;
+import cn.muses.wallet.rpcclient.BitcoinException;
+import cn.muses.wallet.rpcclient.BitcoinRPCClient;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,30 +13,11 @@ import java.util.List;
 import java.util.Map;
 
 
-/**
- * 基于比特币rpc接口开发新的功能
- * <p>
- * TODO
- * </p>
- *
- * @author: shangxl
- * @Date : 2017年11月16日 下午6:10:02
- */
 public class JsonrpcClient extends BitcoinRPCClient {
 
     private final Logger logger = LoggerFactory.getLogger(JsonrpcClient.class);
 
-    /**
-     * <p>
-     * TODO
-     * </p>
-     *
-     * @author: shangxl
-     * @param: @param
-     * rpcUrl
-     * @param: @throws
-     * MalformedURLException
-     */
+
     public JsonrpcClient(String rpcUrl) throws MalformedURLException {
         super(rpcUrl);
     }

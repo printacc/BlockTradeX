@@ -4,7 +4,7 @@ import cn.muses.wallet.config.JsonrpcClient;
 import cn.muses.wallet.entity.Coin;
 import cn.muses.wallet.service.AccountService;
 import cn.muses.wallet.util.AccountReplay;
-import com.spark.blockchain.rpcclient.BitcoinUtil;
+import cn.muses.wallet.rpcclient.BitcoinUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
