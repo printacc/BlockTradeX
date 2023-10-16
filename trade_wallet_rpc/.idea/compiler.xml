@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="wallet-eth-support" />
         <module name="wallet-bitcoin-rpc" />
         <module name="wallet-btc-usdt" />
         <module name="wallet-eth" />
