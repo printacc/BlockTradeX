@@ -78,6 +78,16 @@ public class MemberService  {
         Member mr = memberDao.findMemberByToken(token);
         return mr;
     }
+    public Map<Long, Member> mapByMemberIds(List<Long> memberIds) {
+
+        Map<Long, Member> map = new HashMap<>();
+        List<Member> allByIdIn = memberDao.findAllByIdIn(memberIds);
+        allByIdIn.forEach(v -> {
+            map.put(v.getId(), v);
+        });
+
+        return map;
+    }
 
 }
 

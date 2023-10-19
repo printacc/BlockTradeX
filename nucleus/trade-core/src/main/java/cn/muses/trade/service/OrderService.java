@@ -56,12 +56,9 @@ public class OrderService extends BaseService {
     private OrderDao orderDao;
 
 
-    @Autowired
-    private IdWorkByTwitter idWorkByTwitter;
-    @Bean
-    public IdWorkByTwitter idWorkByTwitter() {
-        return new IdWorkByTwitter(1L, 1L);
-    }
+//    @Autowired
+//    private IdWorkByTwitter idWorkByTwitter;
+
 
     @Autowired
     private AdvertiseService advertiseService;
@@ -164,11 +161,11 @@ public class OrderService extends BaseService {
      * @param order
      * @return
      */
-    @Transactional(rollbackFor = Exception.class)
-    public Order saveOrder(Order order) {
-        order.setOrderSn(String.valueOf(idWorkByTwitter.nextId()));
-        return orderDao.save(order);
-    }
+//    @Transactional(rollbackFor = Exception.class)
+//    public Order saveOrder(Order order) {
+//        order.setOrderSn(String.valueOf(idWorkByTwitter.nextId()));
+//        return orderDao.save(order);
+//    }
 
     public Page<Order> pageQuery(int pageNo, Integer pageSize, OrderStatus status, long id, String orderSn) {
         Sort orders = Criteria.sortStatic("id.desc");
