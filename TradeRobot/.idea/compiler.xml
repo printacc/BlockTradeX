@@ -2,13 +2,19 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="robot-market" />
+        <module name="er_market" />
         <module name="robot-nomal" />
+        <module name="er_robot_normal" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="robot-market" target="1.8" />
+      <module name="robot-nomal" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

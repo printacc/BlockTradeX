@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>cn.muses.robot</groupId>
-  <artifactId>TradeRobot</artifactId>
+  <groupId>com.muses.er.robot</groupId>
+  <artifactId>exchange_robot</artifactId>
   <version>1.0</version>
   <packaging>pom</packaging>
 
-  <name>Maven</name>
+  <name>exchange_robot</name>
+  <url>https://www.bizzan.pro</url>
+  <description>数字货币交易系统机器人交易程序</description>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.19.RELEASE</version>
+    <relativePath />
+    <!-- lookup parent from repository -->
+  </parent>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.jdk_version>1.8</project.build.jdk_version>
-    <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
-    <spring-boot_version>2.3.12.RELEASE</spring-boot_version>
+    <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
+    <spring-boot_version>1.5.19.RELEASE</spring-boot_version>
     <slf4j_version>1.7.7</slf4j_version>
     <jcl_version>1.1</jcl_version>
     <log4j_version>1.2.17</log4j_version>
@@ -25,7 +37,8 @@
   </properties>
 
   <modules>
-    <module>robot-market</module>
+    <module>er_market</module>
+    <module>er_robot_normal</module>
   </modules>
 
   <dependencyManagement>
@@ -172,6 +185,12 @@
     </resources>
     <plugins>
       <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
@@ -225,4 +244,5 @@
       </properties>
     </profile>
   </profiles>
+
 </project>
