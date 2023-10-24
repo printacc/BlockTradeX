@@ -25,7 +25,7 @@
   </properties>
 
   <modules>
-    <module>robot-market/robot-market</module>
+    <module>robot-market</module>
   </modules>
 
   <dependencyManagement>

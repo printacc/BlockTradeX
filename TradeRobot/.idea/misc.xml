@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/robot-market/robot-market/pom.xml" />
+        <option value="$PROJECT_DIR$/robot-market/pom.xml" />
+        <option value="$PROJECT_DIR$/robot-nomal/pom.xml" />
       </list>
     </option>
   </component>
