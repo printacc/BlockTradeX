@@ -17,4 +17,10 @@
       <module name="robot-nomal" target="1.8" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="er_market" options="" />
+      <module name="er_robot_normal" options="" />
+    </option>
+  </component>
 </project>
